@@ -1,0 +1,25 @@
+.pointer {
+  cursor: pointer;
+}
+
+.forbidden {
+  cursor: not-allowed;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.none {
+  display: none;
+}
+
+.click-through{
+  pointer-events: none;
+}

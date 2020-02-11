@@ -1,0 +1,155 @@
+// Config
+import { EnvEnum } from './env.enum';
+
+/**
+ * Use to get current environment
+ * Instanciate by webpack environment plugin : <ROOT>/config/webpack.common.js
+ */
+declare var process: any;
+
+/**
+ * Host of production website
+ */
+const prodWebHost: string = 'collaboration.airbus.corp';
+/**
+ * Host of validation website
+ */
+const valWebHost: string = 'collaboration-v.airbus-v.corp';
+
+// Export config const
+export const ENV: EnvEnum = getEnv();
+export const API_URL: string = getAPI();
+export const AUTH_URL: string = getAUTHURL();
+export const BASE_URL: string = getBaseUrl();
+export const UPLOADS_URL: string = getUPLOADSURL();
+export const GLOBALFILTER: string = getGLOBALFILTER();
+export const LOADOPTIONS: string = getLOADOPTIONS();
+export const API_LOCAL: string = getAPILocal();
+// Use Mock in all application
+export const USE_MOCK: boolean = false;
+export const HOMEPAGE_URL: string = `/reporting/g-suite-deployment`;
+export const API_LOCAL: string = getAPILocal();
+
+/**
+ * Return current environment
+ * PROD if build with --prod parameter (device) or run in prod host (web browser)
+ * DEV otherwhise
+ */
+function getEnv(): EnvEnum {
+  // Domain name of the web host
+  const host = window.location.host;
+  // In device mode or production website
+  // process.env.IONIC_ENV === 'prod' ||
+  if (host === prodWebHost) {
+    return EnvEnum.PROD;
+  }
+  if (host === valWebHost) {
+    return EnvEnum.VAL;
+  }
+
+  return EnvEnum.DEV;
+}
+
+/**
+ * Get API URL according to current environment
+ */
+function getAPI(): string {
+  const prodAPIURL = 'https://collaboration.airbus.corp/manage/';
+  const preprodAPIURL = 'https://collaboration-p.airbus.corp/manage/';
+  const valAPIURL = 'https://collaboration-v.airbus-v.corp/manage/';
+  const devAPIURL = 'https://collaboration-v.airbus-v.corp/manage/';
+
+  // return devAPIURL;
+  if (ENV === EnvEnum.PROD) {
+    return prodAPIURL;
+  }
+  if (ENV === EnvEnum.VAL) {
+    return valAPIURL;
+  }
+
+  return devAPIURL;
+}
+function getAUTHURL(): string {
+  const prodAUTHURL = 'https://collaboration.airbus.corp/manage/provisioning/sso/token.php?application=ADMIN&redirectUri=';
+  const preprodAUTHURL = 'https://collaboration-p.airbus.corp/manage/provisioning/sso/token.php?application=ADMIN&redirectUri=';
+  const valAUTHURL = 'https://collaboration-v.airbus-v.corp/manage/provisioning/sso/token.php?application=ADMIN&redirectUri=';
+  const intAUTHURL = 'https://collaboration-v.airbus-v.corp/manage/provisioning/sso/token.php?application=ADMIN&redirectUri=';
+  const devAUTHURL = 'https://collaboration-v.airbus-v.corp/manage/provisioning/sso/token.php?application=ADMIN&redirectUri=';
+
+  // return devAUTHURL;
+  if (ENV === EnvEnum.PROD) {
+    return prodAUTHURL;
+  }
+  if (ENV === EnvEnum.VAL) {
+    return valAUTHURL;
+  }
+
+  return devAUTHURL;
+}
+function getUPLOADSURL(): string {
+  const prodAUTHURL = 'https://collaboration.airbus.corp';
+  const valAUTHURL = 'https://collaboration-v.airbus-v.corp';
+  const devAUTHURL = 'http://fr0-vsiaas-7126:62';
+
+  // return devAUTHURL;
+  if (ENV === EnvEnum.PROD) {
+    return prodAUTHURL;
+  }
+  if (ENV === EnvEnum.VAL) {
+    return valAUTHURL;
+  }
+
+  return devAUTHURL;
+}
+
+function getBaseUrl(): string {
+  const prodBASEURL = '/';
+  const valBASEURL = '/';
+  const devBASEURL = '/';
+  // return devBASEURL;
+  if (ENV === EnvEnum.PROD) {
+    return prodBASEURL;
+  }
+  if (ENV === EnvEnum.VAL) {
+    return valBASEURL;
+  }
+
+  return devBASEURL;
+}
+
+function getGLOBALFILTER(): string {
+  return encodeURI(JSON.stringify({
+    column: null,
+    data: null,
+    pageFilter: null,
+    mwf: null,
+    cause: null
+  }));
+}
+
+function getAPILocal(): string {
+  const localAPIURL = 'http://localhost:4200';
+  return localAPIURL;
+}
+
+function getLOADOPTIONS(): string {
+  return encodeURI(JSON.stringify({
+    sort: null,
+    requireTotalCount: true,
+    searchOperation: 'contains',
+    searchValue: null,
+    userData: {},
+    totalSummary: [{
+      selector: 'mail',
+      summaryType: 'count'
+    }, {
+      selector: 'mail',
+      summaryType: 'min'
+    }]
+  }));
+}
+
+function getAPILocal(): string {
+  const localAPIURL = 'http://localhost:4200';
+  return localAPIURL;
+}

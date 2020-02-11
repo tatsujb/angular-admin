@@ -1,0 +1,76 @@
+$dwp-light-red: #EF5350;
+$dwp-light-orange: #FFA726;
+$dwp-light-yellow: #FFCA28;
+$dwp-light-blue: #29B6F6;
+$dwp-light-green: #9CCC65;
+$dwp-light-purple: #7E57C2;
+$dwp-light-pink: #c26eaa;
+$dwp-light-gray: #78909C;
+$dwp-light-blue: #84dbff;
+$dwp-dark-blue: #40596b;
+$dwp-bg-dark-blue: #40596b;
+$dwp-yellow: #ffd15c;
+$dwp-red: #ff7058;
+
+
+.dwp-blue {
+  color: $dwp-light-blue;
+}
+
+.dwp-red {
+  color: $dwp-light-red;
+}
+
+.dwp-yellow {
+  color: $dwp-light-yellow;
+}
+
+.dwp-orange {
+  color: $dwp-light-orange;
+}
+
+.dwp-green {
+  color: $dwp-light-green;
+}
+
+.dwp-purple {
+  color: $dwp-light-purple;
+}
+
+.dwp-pink {
+  color: $dwp-light-pink;
+}
+
+.dwp-gray {
+  color: $dwp-dark-blue;
+}
+
+.dwp-light-gray {
+  color: $dwp-light-gray;
+}
+
+.transparent-background {
+  background: transparent;
+}
+
+.alert-warning {
+  background-color: $dwp-light-red !important;
+  border-color: $dwp-light-red !important;
+  color: white !important;
+}
+
+.alert-success {
+  background-color: $dwp-light-green !important;
+  border-color: $dwp-light-green !important;
+  color: white !important;
+}
+
+.alert-info {
+  background-color: $dwp-light-blue !important;
+  border-color: $dwp-light-blue !important;
+  color: white !important;
+}
+
+.color-the-background {
+  background-color: #efefef;
+}
